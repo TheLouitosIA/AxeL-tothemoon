@@ -53,22 +53,6 @@ jobs:
           cd frontend
           npm run build
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-      - name: Clean up existing frontend build
-        run: |
-          Remove-Item -Recurse -Force "E:/AXELIA/frontend/*"
-
-      - name: Déployer l’application frontend
-        run: |
-          cp -r frontend/build/* "E:/AXELIA/frontend"
-=======
       - name: Déployer l’application frontend
         run: |
           cp -r frontend/build/* "E:\AxelxBolt-main\AxelxBolt-main\frontend"
->>>>>>> 576f2bfd0e1de60e78ae621ec739daec0e08953c
-=======
-      - name: Déployer l’application frontend
-        run: |
-          cp -r frontend/build/* "E:\AxelxBolt-main\AxelxBolt-main\frontend"
->>>>>>> 861c9623ed87b89502c235425b4a0e61c0c01669
