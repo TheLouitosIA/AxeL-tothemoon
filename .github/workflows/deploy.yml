@@ -1,0 +1,74 @@
+name: Déploiement sur Serveur Personnel
+
+on:
+  push:
+    branches:
+      - main  # Déclenchement lors de push sur la branche principale
+  workflow_dispatch:  # Permet le déclenchement manuel du workflow
+
+jobs:
+  deploy:
+    runs-on: [self-hosted]
+
+    steps:
+      - name: Cloner le dépôt
+        uses: actions/checkout@v2
+
+      - name: Setup Python environment on Windows
+        if: ${{ runner.os == 'Windows' }}
+        shell: cmd
+        run: |
+          python -m venv venv
+          venv\Scripts\activate
+          venv\Scripts\pip install -r requirements.txt
+
+      - name: Setup Python environment on Unix
+        if: ${{ runner.os != 'Windows' }}
+        shell: bash
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+
+      - name: Démarrer l'application FastAPI avec ngrok
+        shell: bash
+        run: |
+          chmod +x start_app.sh
+          ./start_app.sh &
+          
+      - name: Télécharger et installer Node.js
+        run: |
+          Invoke-WebRequest -Uri "https://nodejs.org/dist/v16.20.2/node-v16.20.2-win-x64.zip" -OutFile "node.zip"
+          Expand-Archive -Path "node.zip" -DestinationPath "$env:ProgramFiles\nodejs" -Force
+          $env:Path += ";$env:ProgramFiles\nodejs"
+          node -v  # Vérifie que Node.js est bien installé
+          
+      - name: Installer les dépendances du frontend
+        run: |
+          cd frontend
+          npm install
+
+      - name: Construire l’application React
+        run: |
+          cd frontend
+          npm run build
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+      - name: Clean up existing frontend build
+        run: |
+          Remove-Item -Recurse -Force "E:/AXELIA/frontend/*"
+
+      - name: Déployer l’application frontend
+        run: |
+          cp -r frontend/build/* "E:/AXELIA/frontend"
+=======
+      - name: Déployer l’application frontend
+        run: |
+          cp -r frontend/build/* "E:\AxelxBolt-main\AxelxBolt-main\frontend"
+>>>>>>> 576f2bfd0e1de60e78ae621ec739daec0e08953c
+=======
+      - name: Déployer l’application frontend
+        run: |
+          cp -r frontend/build/* "E:\AxelxBolt-main\AxelxBolt-main\frontend"
+>>>>>>> 861c9623ed87b89502c235425b4a0e61c0c01669

@@ -1,0 +1,61 @@
+/* Auth.css */
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+.toggle-form button {
+  margin: 20px;
+  background-color: #007bff; /* Fond bleu */
+  border: 1px solid #007bff; /* Bordure bleue pour l'intégration visuelle */
+  color: white; /* Texte en bleu */
+  cursor: pointer; /* Change le curseur en main */
+  padding: 10px 10px; /* Ajoute un peu d'espacement interne */
+  border-radius: 5px; /* Coins légèrement arrondis */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transition fluide */
+}
+
+.auth-logo {
+  display: block;
+  margin: 40px auto 0; /* Centré et avec un espace sous le logo */
+  max-width: 150px;
+  height: auto;
+}
+
+
+
+@media (max-width: 600px) {
+  .auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin-top: -80px;
+  }
+}

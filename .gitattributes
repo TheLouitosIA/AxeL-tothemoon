@@ -1,0 +1,9 @@
+*.psd filter=lfs diff=lfs merge=lfs -text
+runs/train/exp3/weights/best.pt filter=lfs diff=lfs merge=lfs -text
+runs/train/exp3/weights/last.pt filter=lfs diff=lfs merge=lfs -text
+<<<<<<< HEAD
+*.py filter=lfs diff=lfs merge=lfs -text
+*.pt filter=lfs diff=lfs merge=lfs -text
+=======
+>>>>>>> 861c9623ed87b89502c235425b4a0e61c0c01669
+run filter=lfs diff=lfs merge=lfs -text

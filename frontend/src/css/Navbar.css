@@ -1,0 +1,143 @@
+/* Conteneur principal de la barre de navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Espace entre les boutons */
+    align-items: center; /* Centre verticalement les boutons */
+    padding: 0 20px; /* Espacement interne pour éloigner les boutons des bords */
+    background-color: #007bff; /* Couleur bleue */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Légère ombre */
+    position: fixed;
+    width: 100%; /* Barre occupe toute la largeur */
+    z-index: 1000; /* Priorité d'affichage */
+    height: 80px; /* Augmente la hauteur de la barre */
+    top: 0; /* Positionné en haut de la page */
+    box-sizing: border-box; /* Inclut le padding dans la largeur */
+}
+
+/* Liens principaux et bouton déconnexion */
+.nav-link, .logout-button {
+    margin: 0 10px; /* Espacement horizontal entre les boutons */
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column; /* Alignement vertical pour icônes et texte */
+    align-items: center; /* Centre les éléments horizontalement */
+    transition: color 0.3s ease;
+}
+
+/* Bouton de déconnexion */
+.logout-button {
+    border: 1px solid white; /* Bordure bleue pour l'intégration visuelle */
+    color: white; /* Texte en bleu */
+    cursor: pointer; /* Change le curseur en main */
+    padding: 5px 10px; /* Ajoute un peu d'espacement interne */
+    border-radius: 5px; /* Coins légèrement arrondis */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transition fluide */
+}
+
+/* Au survol */
+.logout-button:hover {
+    background-color: white; /* Fond bleu */
+    color: #007bff; /* Texte en blanc */
+}
+
+
+/* Icônes */
+.icon {
+    font-size: 24px; /* Taille des icônes */
+}
+
+/* Texte sous les liens */
+.link-text {
+    font-size: 16px;
+    margin-top: 4px;
+}
+
+/* Style actif des liens */
+.nav-link.active {
+    color: #d1e9ff;
+    font-weight: bold;
+}
+
+/* Bouton de déconnexion */
+.logout-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+/* Éviter le recouvrement du contenu */
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 80px; /* Ajuste le décalage en fonction de la nouvelle hauteur de la barre */
+    box-sizing: border-box; /* Gestion des dimensions cohérente */
+}
+
+/* Mode tablette et téléphone */
+@media (max-width: 1024px) {
+    .navbar {
+        justify-content: space-around; /* Uniformise l'espacement des boutons */
+        top: auto;
+        bottom: 0; /* Place la barre en bas */
+        height: 60px; /* Ajuste la hauteur pour les petits écrans */
+        padding: 0 10px; /* Réduit le padding sur mobile */
+        border-radius: 0; /* Supprime les coins arrondis sur mobile */
+    }
+
+    body {
+        padding-top: 0; /* Supprime le décalage en haut pour les petits écrans */
+        padding-bottom: 60px; /* Laisse de l'espace pour la barre en bas */
+    }
+
+    .nav-link {
+        flex-direction: column; /* Alignement vertical des éléments */
+    }
+
+    .icon {
+        display: block; /* Affiche les icônes */
+    }
+
+    .link-text {
+        display: none; /* Masque le texte */
+    }
+
+    .logout-button .icon {
+        display: block;
+    }
+
+    .logout-button .link-text {
+        display: none;
+    }
+}
+
+/* Mode pour les très petits écrans */
+@media (max-width: 600px) {
+    .navbar {
+        height: 70px; /* Augmente légèrement la hauteur pour plus d'espace */
+        padding: 0 5px; /* Réduit le padding pour les petits écrans */
+    }
+
+    .nav-link, .logout-button {
+        flex: 0.25; /* Chaque bouton occupe une largeur égale */
+        margin: 0; /* Supprime les marges superflues */
+    }
+
+    .icon {
+        font-size: 18px; /* Réduit légèrement les icônes pour économiser de l'espace */
+    }
+
+    .link-text {
+        display: hide; /* Assure que le texte reste visible */
+        font-size: 0px; /* Réduit la taille du texte */
+    }
+
+    .navbar a, .logout-button {
+        width: 20%;
+    }
+}
